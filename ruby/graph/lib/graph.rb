@@ -1,3 +1,6 @@
+#
+# Implements a dynamic connectivity union (Naive).
+#
 class Graph
 
   def initialize(n)
@@ -8,6 +11,10 @@ class Graph
     @elements = *(0..n)
   end
 
+  #
+  # This implementation is not optimized since it is n^2
+  # which means it won't scale.
+  #
   def union(a, b)
     return false if @elements[a] == b
     original = @elements[a]
