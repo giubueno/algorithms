@@ -23,4 +23,11 @@ describe WeightedTreeGraph do
     expect(subject.connected?(1,2)).to be_truthy
     expect(subject.connected?(2,1)).to be_truthy
   end
+
+  it "should be able to calculate the height of a node's tree" do
+    expect(subject.union(1,2)).to be_truthy
+    expect(subject.find_height(1)).to be 2
+    subject.union(2,9)
+    expect(subject.find_height(1)).to be 2
+  end
 end

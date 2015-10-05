@@ -26,6 +26,24 @@ class WeightedTreeGraph < TreeGraph
     return parent
   end
 
+  #
+  # Calculate the height of a node's tree.
+  #
+  def find_height(x)
+    parent = @elements[x]
+    height = 0
+
+    until @elements[parent] == parent do
+      parent = @elements[parent]
+      height += 1
+    end
+
+    # only set a new height for the root if the current one is less than the calculated one
+    @heights[parent] = height if @heights[parent] < height
+
+    return @heights[parent]
+  end
+
 
   #
   # This is a bit faster implementation using a tree to control
@@ -38,8 +56,12 @@ class WeightedTreeGraph < TreeGraph
 
     if @heights[rootA] > @heights[rootB]
       @elements[rootB] = rootA
+    elsif @heights[rootA] > @heights[rootB]
+      @elements[rootA] = rootB
     else
       @elements[rootA] = rootB
+      @heights[rootA] += 1
+      @heights[rootB] += 1
     end
 
     return true
