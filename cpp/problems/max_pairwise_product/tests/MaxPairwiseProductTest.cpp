@@ -12,12 +12,22 @@ TEST_CASE( "when the numbers are 1 2 3" ) {
   REQUIRE( MaxPairwiseProduct(numbers, 3) == 6 );
 }
 
+TEST_CASE( "when there two equal maximum 0, 3, 2, 3, 2" ) {
+  int numbers[] = {0, 3, 2, 3, 2};
+  REQUIRE( MaxPairwiseProduct(numbers, 5) == 9 );
+}
+
+TEST_CASE( "when there is a negative number" ) {
+  int numbers[] = {0, 3, 2, -3, 2};
+  REQUIRE( MaxPairwiseProduct(numbers, 5) == 6 );
+}
+
 TEST_CASE( "when the numbers are 100000 90000" ) {
   int numbers[] = {100000, 90000};
   REQUIRE( MaxPairwiseProduct(numbers, 2) == 9000000000 );
 }
 
-TEST_CASE( "when the numbers are 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20" ) {
+TEST_CASE( "when the numbers are 20, 1, 2, 3, 4, 5, 6, 7, 8, 19, 10, 11, 12, 13, 14, 15, 16, 17, 18, 9" ) {
   int numbers[] = {20, 1, 2, 3, 4, 5, 6, 7, 8, 19, 10, 11, 12, 13, 14, 15, 16, 17, 18, 9};
   REQUIRE( MaxPairwiseProduct(numbers, 20) == 380 );
 }
