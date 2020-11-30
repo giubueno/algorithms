@@ -5,8 +5,9 @@ import (
 	"sort"
 )
 
-// MaxProduct calculates the max product of two different elements of the slice.
+// MaxProduct finds the maximum product of two distinct numbers in a sequence of non-negative integers.
 func MaxProduct(nums []int) int {
+	// sort the numbers to have an average O(nlogn) performance (quicksort).
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] < nums[j]
 	})
